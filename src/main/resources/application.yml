@@ -1,0 +1,27 @@
+server:
+   host: localhost
+   port: 8087
+
+
+
+spring:
+  profiles:
+    active: true
+
+app:
+    context:
+     path: http://${server.host}:${server.port}
+    token:
+     expiryTime: 300000
+    resources:
+     path: ${user.home}${file.separator}bootdemo${file.separator}/resources
+#300000 equal to 5 minutes
+
+logging:
+  level:
+    org.springframework.web: ERROR
+    com.example.bootdemo: DEBUG
+  pattern:
+    console: '%highlight{%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] [%t] %l - %msg%n}{FATAL=magenta, ERROR=red, WARN=yellow, INFO=cyan, DEBUG=orange, TRACE=blue}'
+    file: '%highlight{%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] [%t] %l - %msg%n}{FATAL=magenta, ERROR=red, WARN=yellow, INFO=cyan, DEBUG=orange, TRACE=blue}'
+  file: ${user.home}${file.separator}bootdemo${file.separator}app.log
